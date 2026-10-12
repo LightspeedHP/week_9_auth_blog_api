@@ -72,6 +72,7 @@ const updateArticle = async(req, res, next) => {
             new: true,
             runValidators: true
         })
+
         if(!update){
             res.status(404).json({message: "Article not found"})
         }
@@ -90,6 +91,7 @@ const deleteArticle = async(res, req, next) => {
         if(!article){
             res.status(404).json({message: "Article not found"})
         }
+
         res.status(200).json({
             message: "Article deleted",
             data: article

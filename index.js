@@ -16,7 +16,7 @@ app.use(logger);
 
 app.use("/api", articleRoutes);
 
-app.use("/api", userRoutes);
+app.use("/api/auth", userRoutes);
 
 app.use(errorHandler);
 

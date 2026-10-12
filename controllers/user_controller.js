@@ -9,7 +9,7 @@ const registerUser = async(req, res, next) => {
         const hashed = await bcrypt.hash(password, salt);
 
         const existingUser = await UserModel.findOne({email: email});
-        if(!existingUser){
+        if(existingUser){
             return res.status(400).json({message: "User already exist"});
         }
 
@@ -40,7 +40,7 @@ const loginUser = async (req, res, next) => {
         const token = jwt.sign(
             {userId: user._id, name: user.name},
             process.env.JWT_SECRET,
-            {expiredIn: '7d'}
+            {expiresIn: '7d'}
         );
 
         const resUser = {

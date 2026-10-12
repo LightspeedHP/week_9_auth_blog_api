@@ -6,7 +6,7 @@ const postArticleSchema = Joi.object({
 })
 
 const validateArticleCreate = (req, res, next) => {
-    const error = postArticleSchema.validate(req.body)
+    const {error} = postArticleSchema.validate(req.body)
     if (error){
         res.status(400).json({error: error.details[0].message})
     }
@@ -20,7 +20,7 @@ const updateArticleSchema = Joi.object({
 })
 
 const validateArticleUpdate = (req, res, next) => {
-    const error = updateArticleSchema.validate(req.body)
+    const {error} = updateArticleSchema.validate(req.body)
     if (error){
         res.status(400).json({error: error.details[0].message})
     }
