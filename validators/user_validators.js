@@ -9,8 +9,7 @@ const createUserSchema = Joi.object({
 const validateNewUser = (req, res, next) => {
     const {error} = createUserSchema.validate(req.body)
     if (error){
-        //return res.status(400).json({error: error.details[0].message});
-        return res.status(400).json({error: error});
+        return res.status(400).json({error: error.details[0].message});
     }
     next();
 }

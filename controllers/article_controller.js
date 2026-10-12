@@ -85,17 +85,14 @@ const updateArticle = async(req, res, next) => {
     }
 }
 
-const deleteArticle = async(res, req, next) => {
+const deleteArticle = async(req, res, next) => {
     try {
         const article = await ArticleModel.findByIdAndDelete(req.params.id);
         if(!article){
-            res.status(404).json({message: "Article not found"})
+            res.status(404).json({message: "Article not found"});
         }
 
-        res.status(200).json({
-            message: "Article deleted",
-            data: article
-        })
+        res.status(200).json({message: "Article deleted"});
     } catch (error) {
         next(error)
     }
